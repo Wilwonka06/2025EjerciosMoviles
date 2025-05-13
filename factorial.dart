@@ -1,5 +1,4 @@
 import 'dart:io';
-
 void main() {
   print('Ingresa el número para realizar el factorial:');
   int fact = int.parse(stdin.readLineSync()!);
