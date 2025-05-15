@@ -3,7 +3,8 @@ import 'dart:io';
 void main() {
   listExample();
   setExample();
-  ejercicios();
+ ejercicios();
+/*  stuent(); */
 }
 
 void listExample() {
@@ -52,23 +53,48 @@ void ejercicios() {
   List<int> numbers = [];
   List<int> listPrimo = [];
   List<int> listNPrimo = [];
-  
+
   for (var i = 0; i < tmn; i++) {
     stdout.write('Ingresa el elemento ${i + 1}: ');
     int number = int.parse(stdin.readLineSync()!);
     numbers.add(number);
   }
 
-  for (var i = 0; i < numbers.length; i++) {
-    if (numbers[i] % 2 == 0) {
-      
-      listPrimo.add(numbers[i]);
+  bool esPrimo(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i <= n ~/ 2; i++) {
+      if (n % i == 0) return false;
+    }
+    return true;
+  }
+
+  for (int num in numbers) {
+    if (esPrimo(num)) {
+      listPrimo.add(num);
     } else {
-      
-      listNPrimo.add(numbers[i]);
+      listNPrimo.add(num);
     }
   }
-  /* print('Números primos: $listPrimo');
-  print('Números no primos: $listNPrimo'); */
+
+  print('Números primos: $listPrimo');
+  print('Números no primos: $listNPrimo');
 }
 
+/* void stuent(){
+  Map Estudiantes ={
+    'machado': 17,
+    'sarai': 18,
+    'maria': 18,
+    'wilson': 18,
+    'david': 21
+  };
+
+  stdout.write('Ingresa el nombre del estudiante: ');
+  String nombre = stdin.readLineSync()!.toLowerCase();
+
+if (Estudiantes.containsKey(nombre)) {
+      print('Nombre: $nombre, Edad: ${Estudiantes[nombre]}');
+    }else{
+      print('El estudiante no esta registrado');
+    }
+} */
